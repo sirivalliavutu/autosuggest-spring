@@ -1,1 +1,2 @@
-alert("hello hey")
+// alert("hello hey")
+console.log("Hello from JS");
