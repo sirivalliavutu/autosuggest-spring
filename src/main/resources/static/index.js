@@ -1,4 +1,4 @@
-alert("view profile")
+// alert("view profile")
 // console.log("Hello from JS");
 
 // data = {

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: antiquewhite;
+            text-align: center;
+        }
+        .gear{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+        .pill{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .middlepart{
+            text-align: center;
+            margin-top: 100px;
+            left: auto;
+            right: auto;
+        }
+
+        .middlepart p{
+            color: rgb(83, 83, 156);
+            font-size: 20px;
+            padding: 30px;
+        }
+
+        .halfhead{
+            color: brown;
+            font-size: 50px;
+        }
+
+        .middlepart h1{
+            color: cadetblue;
+            font-size: 50px;
+        }
+
+        .searchbar{
+            border: solid;
+            padding: 10px;
+            width: 80%;
+            padding-left: 30px;
+            border-radius: 20px;
+        }
+
+        .lens{
+            left: 30px;
+            position: relative;
+        }
+
+        .search-suggestions {
+            width: 80%;
+            margin: 8px 0 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            text-align: left;
+            margin: 0px auto;
+        }
+        .suggestion {
+            padding: 10px 14px;
+            border-bottom: 1px solid #f2f2f2;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <span class="gear"> &#x2699; </span>
+    <span class="pill"> &#x2022; online | &#x1F552; - ms </span>
+    <div class="middlepart">
+        <h1> <span class="halfhead"> Being </span> Siri </h1>
+        <p>Four avengers, all in one. I am spiderman </p>
+        <span class="lens"> &#128269;</span>
+        <input class="searchbar" oninput=getSearchSuggestions() ="text" placeholder="type to explore">
+        <p class="search-suggestions" id="search-suggestions">Artificial Intelligence and Data Science</p>
+    </div>
+    <script>
+        function getSearchSuggestions(){
+            var searchBox = document.getElementsById(searchbar);
+            var searchSuggestions = document.getElementsById("search-suggestions")
+                var userInput = searchBox.value;
+                if(userInput.trim()==="") return;
+                var URL1 = "https://autosuggest-backend.onrender.com/api/autosuggest?q="
+                var URL3 = "&algorithm=brute&limit=10&weighted=false"
+
+                var URL= URL1 + userInput + URL3;
+
+                fetch(URL)
+                    .then(function(response){
+                        return response.json();
+                    })
+                    .then(function(data){
+                        var searchResults = "";
+                        var suggestions = data.results;
+                        for(var i=0; i<data.count; i++){
+                            searchResults+="<div class='suggestions'>" +
+                                suggestions[i].text +
+                                "</div>";
+                        }
+                        searchSuggestions.innerHTML=searchResults;
+                    })
+            }
+    
+    </script>
+</body>
+</html>
+
+<!-- 
+https://autosuggest-backend.onrender.com/api/autosuggest
+ ?q=ba&algorithm=brute&limit=10&weighted=false -->
