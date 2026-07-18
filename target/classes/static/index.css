@@ -18,7 +18,6 @@ h1{
 }
 
 .navbar a{
-    size: 40px;
     padding: 20px;
     padding-right: 40px;
     padding-left: 40px;
@@ -28,7 +27,7 @@ h1{
 
 .navbar a:hover{
     color: antiquewhite;
-    background-color: rgb(138, 107, 118);
+    background-color: rgb(147, 126, 132);
 }
 
 .card{
